@@ -24,6 +24,8 @@ namespace Spielerrollen
         {
             int test;
 
+            DAss ist ein test
+
             InitializeComponent();
         }
     }
