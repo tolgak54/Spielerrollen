@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Spielerrollen"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Bayern München" Height="350" Width="525">
     <Grid>
-        
+        <Button x:Name="button_datei" Content="Datei Hinzufügen" HorizontalAlignment="Left" Height="20" Margin="45,33,0,0" VerticalAlignment="Top" Width="111" Click="button_datei_Click"/>
+        <ListBox x:Name="listBoxAusgabe" HorizontalAlignment="Left" Height="299" Margin="269,10,0,0" VerticalAlignment="Top" Width="224"/>
+        <ListBox x:Name="listBoxDatei" HorizontalAlignment="Left" Height="46" Margin="10,116,0,0" VerticalAlignment="Top" Width="219"/>
+        <Label x:Name="labelDatei" Content="Datei:" HorizontalAlignment="Left" Margin="27,85,0,0" VerticalAlignment="Top" Width="46"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="58,194,0,0" VerticalAlignment="Top" Width="98" Click="button_Click"/>
+
     </Grid>
 </Window>
