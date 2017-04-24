@@ -28,7 +28,6 @@ namespace Spielerrollen
         public MainWindow()
         {
             InitializeComponent();
-            //test();
         }
 
         private void button_datei_Click(object sender, RoutedEventArgs e)
@@ -44,41 +43,18 @@ namespace Spielerrollen
                 while ((line = sr.ReadLine()) != null)
                 {
                     string idx = line.Substring(0, line.IndexOf(";"));
-                    listBoxAusgabe.Items.Add(line);
+                    Label l = new Label();
+                    l.Content = line;
+                    listBoxAusgabe.Items.Add(l);
                 }
                 listBoxDatei.Items.Add(ofd.FileName);
                 sr.Close();
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void listBoxAusgabe_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            for (int i = 0; i < listBoxAusgabe.Items.Count; i++)
-            {
-                switch (spieler.Count)
-                {
-                    case 1:
-   
-                        break;
-                    case 2:
-                        
-                        break;
-                    case 3:
-
-                        break;
-                    default:
-                        
-                        break;
-                }
-            }
+                ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Green;
         }
-        //public void test()
-        //{
-        //FileStream f = new FileStream(@"C:\Users\tolga\Desktop\Schule\3CHIT\SEW\Projekt\Spielerrollen2.csv", FileMode.Open, FileAccess.Read);
-        //StreamReader s = new StreamReader(f);
-        //label.Content = s.ReadToEnd();       
-        //string[] sj = s.ReadToEnd().Split(';');
-        //label.Content = "Name: " + sj[0] + ", Position: " + sj[1]; 
-        //}
     }
 }
