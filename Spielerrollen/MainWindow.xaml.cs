@@ -32,7 +32,7 @@ namespace Spielerrollen
 
         private void button_datei_Click(object sender, RoutedEventArgs e)
         {
-            string line = "";
+            string line;
 
 
             if (ofd.ShowDialog() == true)
@@ -54,7 +54,14 @@ namespace Spielerrollen
 
         private void listBoxAusgabe_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if(((Label)listBoxAusgabe.SelectedItem).Content.ToString().Contains("Abwehrspieler"))
                 ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Green;
+            else if (((Label)listBoxAusgabe.SelectedItem).Content.ToString().Contains("Mittelfeldspieler"))
+                ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Blue;
+            else if (((Label)listBoxAusgabe.SelectedItem).Content.ToString().Contains("Angreifer"))
+                ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Red;
+            else
+                ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Yellow;
         }
     }
 }
