@@ -46,6 +46,7 @@ namespace Spielerrollen
                     Label l = new Label();
                     l.Content = line;
                     listBoxAusgabe.Items.Add(l);
+                    spieler.Add(new Spieler(Convert.ToInt32(line.Split(';')[0]), line.Split(';')[1], line.Split(';')[2]));
                 }
                 listBoxDatei.Items.Add(ofd.FileName);
                 sr.Close();
@@ -62,6 +63,25 @@ namespace Spielerrollen
                 ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Red;
             else
                 ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Yellow;
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxAusgabe.Items.Clear();
+            spieler.Sort();
+            foreach (Spieler item in spieler)
+            {
+                Label l2 = new Label();
+                l2.Content = item.Nummer + ";" + item.Name + ";" + item.Position;
+                listBoxAusgabe.Items.Add(l2);
+            }
+        }
+
+        private void buttonClear_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxDatei.Items.Clear();
+            listBoxAusgabe.Items.Clear();
+            spieler.Clear();
         }
     }
 }

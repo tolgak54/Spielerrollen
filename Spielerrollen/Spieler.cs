@@ -6,22 +6,26 @@ using System.Threading.Tasks;
 
 namespace Spielerrollen
 {
-    class Spieler
+    class Spieler : IComparable
     {
+        public int Nummer { get; set; }
         public string Name { get; set; }
-        //public string Position { get; set; }
-        public string Angreifer { get; set; }
-        public string Mittelfeldspieler { get; set; }
-        public string Verteidiger { get; set; }
-        public string Torwart { get; set; }
+        public string Position { get; set; }
+        //public string Angreifer { get; set; }
+        //public string Mittelfeldspieler { get; set; }
+        //public string Verteidiger { get; set; }
+        //public string Torwart { get; set; }
 
-        public Spieler(string name, string angreifer, string mittelfeld, string verteidiger, string torwart)
+        public Spieler(int nummer, string name, string position)
         {
+            Nummer = nummer;
             Name = name;
-            Angreifer = angreifer;
-            Mittelfeldspieler = mittelfeld;
-            Verteidiger = verteidiger;
-            Torwart = torwart;
+            Position = position;
+        }
+
+        public int CompareTo(object obj)
+        {
+            return this.Nummer.CompareTo(((Spieler)obj).Nummer);
         }
     }
 }
