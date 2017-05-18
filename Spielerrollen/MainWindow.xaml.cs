@@ -22,6 +22,7 @@ namespace Spielerrollen
     /// </summary>
     public partial class MainWindow : Window
     {
+        enum Spielertyp { Abwehrspieler, Mittelfeldspieler, Angreifer }
         OpenFileDialog ofd = new OpenFileDialog();
         List<Spieler> spieler = new List<Spieler>();
 
@@ -33,7 +34,6 @@ namespace Spielerrollen
         private void button_datei_Click(object sender, RoutedEventArgs e)
         {
             string line;
-
 
             if (ofd.ShowDialog() == true)
             {
@@ -47,6 +47,8 @@ namespace Spielerrollen
                     l.Content = line;
                     listBoxAusgabe.Items.Add(l);
                     spieler.Add(new Spieler(Convert.ToInt32(line.Split(';')[0]), line.Split(';')[1], line.Split(';')[2]));
+                    l.Background = Brushes.Pink;
+
                 }
                 listBoxDatei.Items.Add(ofd.FileName);
                 sr.Close();
@@ -55,14 +57,20 @@ namespace Spielerrollen
 
         private void listBoxAusgabe_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(((Label)listBoxAusgabe.SelectedItem).Content.ToString().Contains("Abwehrspieler"))
+            Spielertyp abwehrspieler = Spielertyp.Abwehrspieler;
+            Spielertyp mittelfeldspieler = Spielertyp.Mittelfeldspieler;
+            Spielertyp angreifer = Spielertyp.Angreifer;
+
+            if (((Label)listBoxAusgabe.SelectedItem).Content.ToString().Contains(abwehrspieler.ToString()))
                 ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Green;
-            else if (((Label)listBoxAusgabe.SelectedItem).Content.ToString().Contains("Mittelfeldspieler"))
+            else if (((Label)listBoxAusgabe.SelectedItem).Content.ToString().Contains(mittelfeldspieler.ToString()))
                 ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Blue;
-            else if (((Label)listBoxAusgabe.SelectedItem).Content.ToString().Contains("Angreifer"))
+            else if (((Label)listBoxAusgabe.SelectedItem).Content.ToString().Contains(angreifer.ToString()))
                 ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Red;
             else
                 ((Label)listBoxAusgabe.SelectedItem).Background = Brushes.Yellow;
+
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -74,6 +82,7 @@ namespace Spielerrollen
                 Label l2 = new Label();
                 l2.Content = item.Nummer + ";" + item.Name + ";" + item.Position;
                 listBoxAusgabe.Items.Add(l2);
+                l2.Background = Brushes.Pink;
             }
         }
 
